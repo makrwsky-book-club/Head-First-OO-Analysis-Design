@@ -36,8 +36,9 @@ export class Inventory {
     if (!guitar) return null;
     return guitar;
   }
-  search(searchGuitar: Guitar): Guitar {
-    const guitar = this.guitars.find(
+
+  search(searchGuitar: Guitar): Guitar[] {
+    const matchingGuitars = this.guitars.filter(
       (guitar: Guitar) =>
         guitar.getBuilder() === searchGuitar.getBuilder() &&
         guitar.getModel() === searchGuitar.getModel() &&
@@ -45,7 +46,6 @@ export class Inventory {
         guitar.getBackWood() === searchGuitar.getBackWood() &&
         guitar.getTopWood() === searchGuitar.getTopWood()
     );
-    if (!guitar) return null;
-    return guitar;
+    return matchingGuitars;
   }
 }

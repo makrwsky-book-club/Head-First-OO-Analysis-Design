@@ -11,4 +11,14 @@ export const initializeInventory = (inventory: Inventory): void => {
     Wood.ALDER,
     Wood.ALDER
   );
+
+  inventory.addGuitar(
+    "V9512",
+    1549.95,
+    Builder.FENDER,
+    "Stratocostor",
+    Type.ELECTRIC,
+    Wood.ALDER,
+    Wood.ALDER
+  );
 };
