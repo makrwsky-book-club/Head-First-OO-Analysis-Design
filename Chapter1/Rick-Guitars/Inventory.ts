@@ -1,5 +1,5 @@
 import { Guitar } from "./Guitar";
-import { Builder, Type, Wood } from "./Types";
+import { GuitarSpec } from "./GuitarSpec";
 
 export class Inventory {
   private guitars: Guitar[];
@@ -8,24 +8,8 @@ export class Inventory {
     this.guitars = [];
   }
 
-  addGuitar(
-    serialNumber: string,
-    price: number,
-    builder: Builder,
-    model: string,
-    type: Type,
-    backWood: Wood,
-    topWood: Wood
-  ): void {
-    const guitar = new Guitar(
-      serialNumber,
-      price,
-      builder,
-      model,
-      type,
-      backWood,
-      topWood
-    );
+  addGuitar(serialNumber: string, price: number, spec: GuitarSpec): void {
+    const guitar = new Guitar(serialNumber, price, spec);
     this.guitars.push(guitar);
   }
 
@@ -37,15 +21,17 @@ export class Inventory {
     return guitar;
   }
 
-  search(searchGuitar: Guitar): Guitar[] {
-    const matchingGuitars = this.guitars.filter(
-      (guitar: Guitar) =>
-        guitar.getBuilder() === searchGuitar.getBuilder() &&
-        guitar.getModel() === searchGuitar.getModel() &&
-        guitar.getType() === searchGuitar.getType() &&
-        guitar.getBackWood() === searchGuitar.getBackWood() &&
-        guitar.getTopWood() === searchGuitar.getTopWood()
-    );
+  search(searchSpec: GuitarSpec): Guitar[] {
+    const matchingGuitars = this.guitars.filter((guitar: Guitar) => {
+      const spec = guitar.getSpec();
+      return (
+        spec.getBuilder() === searchSpec.getBuilder() &&
+        spec.getModel() === searchSpec.getModel() &&
+        spec.getType() === searchSpec.getType() &&
+        spec.getBackWood() === searchSpec.getBackWood() &&
+        spec.getTopWood() === searchSpec.getTopWood()
+      );
+    });
     return matchingGuitars;
   }
 }

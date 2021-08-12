@@ -1,24 +1,15 @@
 import { Inventory } from "./Inventory";
+import { GuitarSpec } from "./GuitarSpec";
 import { Builder, Type, Wood } from "./Types";
 
 export const initializeInventory = (inventory: Inventory): void => {
-  inventory.addGuitar(
-    "V95693",
-    1499.95,
+  const spec = new GuitarSpec(
     Builder.FENDER,
     "Stratocostor",
     Type.ELECTRIC,
     Wood.ALDER,
     Wood.ALDER
   );
-
-  inventory.addGuitar(
-    "V9512",
-    1549.95,
-    Builder.FENDER,
-    "Stratocostor",
-    Type.ELECTRIC,
-    Wood.ALDER,
-    Wood.ALDER
-  );
+  inventory.addGuitar("V95693", 1499.95, spec);
+  inventory.addGuitar("V9512", 1549.95, spec);
 };
