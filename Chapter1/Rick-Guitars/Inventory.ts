@@ -1,4 +1,5 @@
 import { Guitar } from "./Guitar";
+import { Builder, Type, Wood } from "./Types";
 
 export class Inventory {
   private guitars: Guitar[];
@@ -10,11 +11,11 @@ export class Inventory {
   addGuitar(
     serialNumber: string,
     price: number,
-    builder: string,
+    builder: Builder,
     model: string,
-    type: string,
-    backWood: string,
-    topWood: string
+    type: Type,
+    backWood: Wood,
+    topWood: Wood
   ): void {
     const guitar = new Guitar(
       serialNumber,
