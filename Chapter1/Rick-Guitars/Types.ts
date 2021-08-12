@@ -25,3 +25,8 @@ export enum Wood {
   ALDER = "Alder",
   SITKA = "Sitka",
 }
+
+export enum StringsCount {
+  SIX = "6-string",
+  TWELVE = "12-string",
+}

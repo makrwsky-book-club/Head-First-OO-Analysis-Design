@@ -22,16 +22,9 @@ export class Inventory {
   }
 
   search(searchSpec: GuitarSpec): Guitar[] {
-    const matchingGuitars = this.guitars.filter((guitar: Guitar) => {
-      const spec = guitar.getSpec();
-      return (
-        spec.getBuilder() === searchSpec.getBuilder() &&
-        spec.getModel() === searchSpec.getModel() &&
-        spec.getType() === searchSpec.getType() &&
-        spec.getBackWood() === searchSpec.getBackWood() &&
-        spec.getTopWood() === searchSpec.getTopWood()
-      );
-    });
+    const matchingGuitars = this.guitars.filter((guitar: Guitar) =>
+      guitar.getSpec().matches(searchSpec)
+    );
     return matchingGuitars;
   }
 }

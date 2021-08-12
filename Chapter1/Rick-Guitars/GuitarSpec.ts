@@ -1,4 +1,4 @@
-import { Builder, Type, Wood } from "./Types";
+import { Builder, StringsCount, Type, Wood } from "./Types";
 
 export class GuitarSpec {
   constructor(
@@ -6,7 +6,8 @@ export class GuitarSpec {
     private model: string,
     private type: Type,
     private backWood: Wood,
-    private topWood: Wood
+    private topWood: Wood,
+    private numStrings: StringsCount
   ) {}
 
   getBuilder(): Builder {
@@ -23,5 +24,18 @@ export class GuitarSpec {
   }
   getTopWood(): Wood {
     return this.topWood;
+  }
+  getNumStrings(): StringsCount {
+    return this.numStrings;
+  }
+  matches(otherSpec: GuitarSpec): boolean {
+    return (
+      otherSpec.getBuilder() === this.getBuilder() &&
+      otherSpec.getModel() === this.getModel() &&
+      otherSpec.getType() === this.getType() &&
+      otherSpec.getBackWood() === this.getBackWood() &&
+      otherSpec.getTopWood() === this.getTopWood() &&
+      otherSpec.getNumStrings() === this.getNumStrings()
+    );
   }
 }
